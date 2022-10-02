@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Deployment on Flask</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body style="background-image: url({{ url_for('static', filename='css/bgimg.png') }}); background-attachment: fixed; background-size: cover; background-repeat:no-repeat;">
+ <div class="login">
+	<h1>Transit Demands Forecasting</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}" method="post">
+    	<input type="text" name="Price per week" placeholder="Price per week" required="required" />
+        <input type="text" name="Population of city" placeholder="Population of city" required="required" />
+		<input type="text" name="Monthly income of riders" placeholder="Monthly income of riders" required="required" />
+        <input type="text" name="Average parking rates per month" placeholder="Average parking rates per month" required="required" />
+
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict Number of weekly riders</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+
+</body>
+</html>
